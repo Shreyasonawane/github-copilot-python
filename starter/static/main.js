@@ -71,14 +71,15 @@ function renderPuzzle(puz, sol) {
       const idx = i * SIZE + j;
       const val = puzzle[i][j];
       const inp = inputs[idx];
+      const boxIndex = (Math.floor(i / 3) + Math.floor(j / 3)) % 2;
       if (val !== 0) {
         inp.value = val;
         inp.disabled = true;
-        inp.className = 'sudoku-cell prefilled';
+        inp.className = `sudoku-cell prefilled box-color-${boxIndex}`;
       } else {
         inp.value = '';
         inp.disabled = false;
-        inp.className = 'sudoku-cell';
+        inp.className = `sudoku-cell box-color-${boxIndex}`;
       }
     }
   }
@@ -241,9 +242,10 @@ function applyHint() {
 
   const target = emptyCells[Math.floor(Math.random() * emptyCells.length)];
   const inp = inputs[target.idx];
+  const boxIndex = (Math.floor(target.row / 3) + Math.floor(target.col / 3)) % 2;
   inp.value = solution[target.row][target.col];
   inp.disabled = true;
-  inp.className = 'sudoku-cell prefilled hint';
+  inp.className = `sudoku-cell prefilled hint box-color-${boxIndex}`;
   hintedCells.add(target.idx);
   highlightTwos();
   hintCount += 1;
