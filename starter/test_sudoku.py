@@ -57,6 +57,25 @@ def test_can_place_number_only_when_it_is_safe():
     assert sudoku_logic.can_place(board, 0, 0, 7) is False
 
 
+def test_fill_board_creates_valid_complete_solution():
+    board = sudoku_logic.create_empty_board()
+    assert sudoku_logic.fill_board(board) is True
+    assert sudoku_logic.is_valid_board(board)
+    assert all(cell != sudoku_logic.EMPTY for row in board for cell in row)
+
+
+def test_solve_board_rejects_invalid_board():
+    invalid_board = copy.deepcopy(VALID_BOARD)
+    invalid_board[0][0] = invalid_board[0][1]
+
+    assert sudoku_logic.solve_board(invalid_board) is False
+
+
+def test_has_unique_solution_empty_board_is_false():
+    empty_board = sudoku_logic.create_empty_board()
+    assert sudoku_logic.has_unique_solution(empty_board) is False
+
+
 def test_solves_known_puzzle():
     puzzle = [
         [5, 3, 0, 0, 7, 0, 0, 0, 2],

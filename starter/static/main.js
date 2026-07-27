@@ -146,7 +146,15 @@ function loadScores() {
 }
 
 function saveScores(scores) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(scores));
+  const sortedScores = scores
+    .slice()
+    .sort((a, b) => {
+      if (a.timeSeconds !== b.timeSeconds) return a.timeSeconds - b.timeSeconds;
+      if (a.hints !== b.hints) return a.hints - b.hints;
+      return a.timestamp - b.timestamp;
+    })
+    .slice(0, 10);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(sortedScores));
 }
 
 function applyTheme(theme) {
