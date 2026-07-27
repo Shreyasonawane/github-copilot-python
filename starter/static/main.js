@@ -21,9 +21,10 @@ function createBoardElement() {
       const input = document.createElement('input');
       input.type = 'text';
       input.maxLength = 1;
-      input.className = 'sudoku-cell';
       input.dataset.row = i;
       input.dataset.col = j;
+      const boxIndex = (Math.floor(i / 3) + Math.floor(j / 3)) % 2;
+      input.className = `sudoku-cell box-color-${boxIndex}`;
       input.addEventListener('input', (e) => {
         const val = e.target.value.replace(/[^1-9]/g, '');
         e.target.value = val;

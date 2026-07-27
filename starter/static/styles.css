@@ -41,6 +41,10 @@ body.dark-theme #sudoku-board {
 
 .sudoku-cell {
     flex: 1 1 0;
+    min-width: 0;
+    width: 0;
+    padding: 0;
+    box-sizing: border-box;
     aspect-ratio: 1 / 1;
     border: 1px solid #bbb;
     text-align: center;
@@ -66,23 +70,19 @@ body.dark-theme .sudoku-cell:focus {
 }
 
 .sudoku-cell.prefilled {
-    background: #e0e0e0;
     font-weight: bold;
     color: #333;
 }
 
 body.dark-theme .sudoku-cell.prefilled {
-    background: #4a4a4a;
     color: #f5f5f5;
 }
 
 .sudoku-cell.hint {
-    background: #d1e7dd;
     color: #0b3d2e;
 }
 
 body.dark-theme .sudoku-cell.hint {
-    background: #2f4f4f;
     color: #d9f7e8;
 }
 
@@ -146,177 +146,19 @@ body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell {
 }
 
 /* 3x3 box checkerboard coloring */
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(9) {
+.sudoku-cell.box-color-0 {
     background-color: #dbeafe;
 }
 
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(1) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(2) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(3) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(1),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(2),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(3),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(4) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(5) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(7),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(8),
-.sudoku-row:nth-child(6) .sudoku-cell:nth-child(9),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(7) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(8) .sudoku-cell:nth-child(6),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(4),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(5),
-.sudoku-row:nth-child(9) .sudoku-cell:nth-child(6) {
+.sudoku-cell.box-color-1 {
     background-color: #e9d5ff;
 }
 
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(9) {
+body.dark-theme .sudoku-cell.box-color-0 {
     background-color: #1e3a5f;
 }
 
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(1) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(2) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(3) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(1),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(2),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(3),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(4) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(5) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(7),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(8),
-body.dark-theme .sudoku-row:nth-child(6) .sudoku-cell:nth-child(9),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(7) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(8) .sudoku-cell:nth-child(6),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(4),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(5),
-body.dark-theme .sudoku-row:nth-child(9) .sudoku-cell:nth-child(6) {
+body.dark-theme .sudoku-cell.box-color-1 {
     background-color: #3b1f5e;
 }
 
@@ -402,6 +244,12 @@ body.dark-theme button:hover {
     font-size: 14px;
     color: #333;
     font-weight: bold;
+}
+
+/* Dark mode timer and hint counter */
+body.dark-theme #timer,
+body.dark-theme #hint-counter {
+    color: #f5f5f5;
 }
 
 #score-list {
